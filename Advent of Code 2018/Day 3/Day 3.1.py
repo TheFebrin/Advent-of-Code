@@ -1,27 +1,27 @@
-from collections import Counter
-
-IDs = []
-ans1, ans2 = '', ''
+board = [[0 for _ in range(1000)] for _ in range(1000)]
 
 with open('input.txt') as f:
     for line in f:
-        IDs.append(line.replace('\n', ''))
 
-for box1 in IDs:
-    for box2 in IDs:
-        if box1 == box2:
-            continue
+        cords = line.replace('\n', '')
+        index = cords[1: cords.find('@') - 1]
+        position = cords[cords.find('@') + 1: cords.find(':')]
+        size = cords[cords.find(':') + 2:]
 
-        diff = 0
-        for i in range(len(box1)):
-            if box1[i] != box2[i]:
-                diff += 1
+        x_pos = int(position[:position.find(',')])
+        y_pos = int(position[position.find(',') + 1:])
 
-        if diff == 1:
-            ans1, ans2 = box1, box2
+        width = int(size[:size.find('x')])
+        height = int(size[size.find('x') + 1:])
 
+        for i in range(width):
+            for j in range(height):
+                board[x_pos + i][y_pos + j] += 1
 
-for i in range(len(ans1)):
-    if ans1[i] != ans2[i]:
-        print(ans1[:i] + ans1[i + 1:])
-        exit()
+answer = 0
+for i in range(1000):
+    for j in range(1000):
+        if board[i][j] > 1:
+            answer += 1
+
+print(answer)
