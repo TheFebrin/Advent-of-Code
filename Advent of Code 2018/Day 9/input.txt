@@ -1,0 +1,9 @@
+009 players; last marble is worth 00048 points: high score is 63
+001 players; last marble is worth 00048 points: high score is 95
+009 players; last marble is worth 00025 points: high score is 32
+010 players; last marble is worth 01618 points: high score is 8317
+013 players; last marble is worth 07999 points: high score is 146373
+017 players; last marble is worth 01104 points: high score is 2764
+021 players; last marble is worth 06111 points: high score is 54718
+030 players; last marble is worth 05807 points: high score is 37305
+476 players; last marble is worth 71431 points : FINAL ANSWER!!!
