@@ -42,7 +42,7 @@ def check(l1: List[Any], l2: List[Any], steps: int) -> Optional[bool]:
         return check(l1=l1, l2=l2, steps=steps + 1)
 
 
-def main() -> None:
+def solve1() -> None:
     arrays = []
     with open("data.txt") as f:
         for line in f.readlines():
@@ -66,5 +66,37 @@ def main() -> None:
     print(sum(res))
 
 
+def solve2() -> None:
+    arrays = []
+    with open("data.txt") as f:
+        for line in f.readlines():
+            line = line.strip()
+            if len(line) == 0:
+                pass
+            else:
+                arrays.append(json.loads(line))
+                
+
+    from functools import cmp_to_key
+    def my_cmp(l1, l2):
+        ans = check(l1=l1, l2=l2, steps=0)
+        if ans is None:
+            return 0
+        
+        if ans is True:
+            return -1
+        
+        if ans is False:
+            return 1
+        
+    ans = sorted(arrays, key=cmp_to_key(lambda x, y: my_cmp(l1=deepcopy(x), l2=deepcopy(y))))
+    for i, x in enumerate(ans):
+        if x == [[2]] or x == [[6]]:
+            print(i)
+
+
+def main() -> None:
+    solve2()
+    
 if __name__ == __name__:
     main()
